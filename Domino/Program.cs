@@ -7,15 +7,12 @@ namespace Domino
     {
         static void Main(string[] args)
         {
-            StreamReader sr = new StreamReader("input.txt");
-            int numberofDominos=int.Parse(sr.ReadLine());
-            Domino[] Dominok=new Domino[numberofDominos];
-            int idx = 0;
-            while (!sr.EndOfStream)
+            int numberofDominos=int.Parse(Console.ReadLine());
+            Domino[] Dominok = new Domino[numberofDominos];
+            for (int i = 0; i < numberofDominos; i++)
             {
-                string[] line = sr.ReadLine().Split('|');
-                Dominok[idx] = new Domino(int.Parse(line[0]),int.Parse(line[1]));
-                idx++;
+                string[] line = Console.ReadLine().Split('|');
+                Dominok[i] = new Domino(int.Parse(line[0]), int.Parse(line[1]));
             }
             DominoKirako DK = new DominoKirako(Dominok, numberofDominos);
             if (DK.Kirak())
@@ -26,7 +23,6 @@ namespace Domino
             {
                 Console.WriteLine("N");
             }
-            Console.ReadKey();
         }
     }
 }
